@@ -9,3 +9,4 @@ describe('hasChar()', () => {
     expect(stringinator.hasChar('purple', 'z')).toBe(false);
   });
 });
+ 

@@ -1,47 +1,53 @@
 const _ = require('./underbar');
 
 const first = function(str, n) {
-  // Your code goes here
-};
+  return _.first(str, n);
+}; 
 
 const last = function(str, n) {
-  // Your code goes here
+  return _.last(str, n);
 };
 
 const removeChar = function(str, target) {
-  // hint: use _.reject
-  // Your code goes here
-};
+  var item =_.reject(str.split(''), char => char === target).join('');
+  console.log(item);
+  return item;
+}
 
 const hasChar = function(str, target) {
-  // hint: use _.some
-  // Your code goes here
+  return _.some(str.split(''), test => test === target);
 };
 
 const isOnlyDigits = function(str) {
-  // Your code goes here
+  return _.every(str, letter => !isNaN(letter));
 };
 
 const filterToOnlyDigits = function(str) {
-  // Your code goes here
+  return _.reject(str, digit => isNaN(digit) || digit === ' ').join('');
 };
 
 const truncateString = function(val, maxLength) {
-  // A freebie solution, this is the ONLY method here that doesn't use Underbar.
   return String(val).slice(0, maxLength);
 };
 
 const truncateLongItems = function(obj, maxLength) {
-  // hint: use truncateString above
-  // Your code goes here
+  return _.map(obj, val => truncateString(val, maxLength));
 };
 
 const countChars = function(str) {
-  // Your code goes here
+  var strSplit = str.split('');
+  return _.reduce(strSplit, (obj, val) => {
+    if(obj[val] === undefined) {
+      obj[val] = 1;
+    } else {
+      obj[val] += 1;
+    }
+    return obj;
+  }, {});
 };
 
 const dedup = function(str) {
-  // Your code goes here
+  return _.uniq(str).join('');
 };
 
 module.exports = {
